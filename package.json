@@ -1,0 +1,39 @@
+{
+  "name": "ebola-dashboard",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "node scripts/dev.mjs",
+    "dev:client": "vite",
+    "api": "node server/index.mjs --dev",
+    "build": "tsc -b && vite build",
+    "lint": "eslint .",
+    "preview": "vite preview",
+    "start": "node server/index.mjs"
+  },
+  "dependencies": {
+    "@types/topojson-client": "^3.1.5",
+    "d3-geo": "^3.1.1",
+    "react": "^19.2.6",
+    "react-dom": "^19.2.6",
+    "topojson-client": "^3.1.0",
+    "world-atlas": "^2.0.2"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.0",
+    "@types/node": "^24.12.3",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^4.7.0",
+    "eslint": "^9.39.0",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-react-refresh": "^0.4.24",
+    "globals": "^15.15.0",
+    "isexe": "^2.0.0",
+    "json-schema-traverse": "^0.4.1",
+    "typescript": "~5.8.3",
+    "typescript-eslint": "^8.59.2",
+    "vite": "^5.4.19"
+  }
+}
