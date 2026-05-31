@@ -1,73 +1,61 @@
-# React + TypeScript + Vite
+# Ebola Live Dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Public-facing Ebola dashboard built with React, Vite, and a live outbreak data pipeline that pulls current information from open CDC and WHO sources.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Live Ebola case summaries from public CDC and WHO pages
+- Vector world map with highlighted outbreak countries and hotspot labels
+- Country-level burden table and regional spotlight panel
+- Netlify-ready deployment using a serverless function for the live data endpoint
 
-## React Compiler
+## Local Development
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Install dependencies:
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Start the dashboard locally:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm run dev
 ```
+
+This runs:
+
+- Vite frontend on its default local port
+- Local API server on `http://localhost:8787`
+
+Build for production:
+
+```bash
+npm run build
+```
+
+Serve the production build locally:
+
+```bash
+npm start
+```
+
+## Netlify Deployment
+
+This repository includes:
+
+- `netlify.toml`
+- `netlify/functions/ebola-summary.mjs`
+
+Netlify settings:
+
+- Build command: `npm run build`
+- Publish directory: `dist`
+- Functions directory: `netlify/functions`
+
+The app keeps using `/api/ebola/summary`. On Netlify, that route is redirected to the serverless function automatically.
+
+## Data Sources
+
+- [CDC Ebola Outbreak: Current Situation](https://www.cdc.gov/ebola/situation-summary/)
+- [WHO Ebola outbreak - DRC 2026](https://www.who.int/emergencies/situations/ebola-outbreak---drc-2026)
