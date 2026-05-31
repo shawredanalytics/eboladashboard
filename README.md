@@ -1,6 +1,10 @@
 # Ebola Live Dashboard
 
-Public-facing Ebola dashboard built with React, Vite, and a live outbreak data pipeline that pulls current information from open CDC and WHO sources.
+Public-facing Ebola dashboard with:
+
+- a React + Vite web app
+- a native Streamlit app for direct hosting from GitHub
+- a live outbreak data pipeline that pulls current information from open CDC and WHO sources
 
 ## Features
 
@@ -8,6 +12,38 @@ Public-facing Ebola dashboard built with React, Vite, and a live outbreak data p
 - Vector world map with highlighted outbreak countries and hotspot labels
 - Country-level burden table and regional spotlight panel
 - Netlify-ready deployment using a serverless function for the live data endpoint
+- Streamlit Community Cloud-ready app using `streamlit_app.py`
+
+## Streamlit Hosting
+
+This repository is now compatible with Streamlit hosting.
+
+Required files included:
+
+- `streamlit_app.py`
+- `streamlit_data.py`
+- `requirements.txt`
+- `.streamlit/config.toml`
+
+### Streamlit Community Cloud Settings
+
+- Repository: this GitHub repo
+- Branch: `main`
+- Main file path: `streamlit_app.py`
+
+### Local Streamlit Run
+
+Install Python dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+Run the Streamlit app:
+
+```bash
+streamlit run streamlit_app.py
+```
 
 ## Local Development
 
@@ -39,6 +75,11 @@ Serve the production build locally:
 ```bash
 npm start
 ```
+
+## Project Modes
+
+- `streamlit_app.py`: use this for Streamlit hosting
+- `src/` + `server/`: use this for the React/Vite app
 
 ## Netlify Deployment
 
